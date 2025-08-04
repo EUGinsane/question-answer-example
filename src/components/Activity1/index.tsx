@@ -8,8 +8,13 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import { IconCheck, IconRefresh, IconX } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
+import {
+  IconCheck,
+  IconChevronRight,
+  IconRefresh,
+  IconX,
+} from "@tabler/icons-react";
+import { useState } from "react";
 
 const Activity1 = () => {
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
@@ -97,28 +102,31 @@ const Activity1 = () => {
 
 const QuestionPractice = ({
   question,
-  answer,
-  answered,
+  // answer,
+  // answered,
 }: {
   question: string;
   answer: boolean;
   answered: boolean;
 }) => {
-  const correct = answer === true ? "Yes" : "No";
-  const [choice, setChoice] = useState<"Yes" | "No" | undefined>(undefined);
-  const isCorrect = choice === undefined ? undefined : choice === correct;
+  // const correct = answer === true ? "Yes" : "No";
+  // const [choice, setChoice] = useState<"Yes" | "No" | undefined>(undefined);
+  // const isCorrect = choice === undefined ? undefined : choice === correct;
 
-  useEffect(() => {
-    if (answered) {
-      setChoice(undefined);
-    }
-  }, [answered]);
+  // useEffect(() => {
+  //   if (answered) {
+  //     setChoice(undefined);
+  //   }
+  // }, [answered]);
 
   return (
     <Paper shadow="md" withBorder p="md">
       <Group justify="space-between">
         <Text fw={500}>{question}</Text>
-        <Group>
+        <Button variant="default" rightSection={<IconChevronRight size={16} />}>
+          Go to Question
+        </Button>
+        {/* <Group>
           <Button
             variant={choice !== undefined ? "light" : "default"}
             color={isCorrect ? "green" : "red"}
@@ -137,7 +145,7 @@ const QuestionPractice = ({
           >
             No
           </Button>
-        </Group>
+        </Group> */}
       </Group>
     </Paper>
   );

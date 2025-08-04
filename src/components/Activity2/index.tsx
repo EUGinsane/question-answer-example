@@ -23,7 +23,7 @@ const Activity2 = () => {
       <Group gap="xl">
         {choice === "3:4" ? (
           <Button color="red" size="xl" w={200} leftSection={<IconX />}>
-            3:4
+            A: 3:4
           </Button>
         ) : (
           <Button
@@ -33,12 +33,12 @@ const Activity2 = () => {
             w={200}
             onClick={() => setChoice("3:4")}
           >
-            3:4
+            A: 3:4
           </Button>
         )}
         {choice === "4:3" ? (
           <Button size="xl" color="green" w={200} leftSection={<IconCheck />}>
-            4:3
+            B: 4:3
           </Button>
         ) : (
           <Button
@@ -48,12 +48,12 @@ const Activity2 = () => {
             w={200}
             onClick={() => setChoice("4:3")}
           >
-            4:3
+            B: 4:3
           </Button>
         )}
         {choice === "4:7" ? (
           <Button color="red" size="xl" w={200} leftSection={<IconX />}>
-            4:7
+            C: 4:7
           </Button>
         ) : (
           <Button
@@ -63,12 +63,12 @@ const Activity2 = () => {
             w={200}
             onClick={() => setChoice("4:7")}
           >
-            4:7
+            C: 4:7
           </Button>
         )}
         {choice === "5:3" ? (
           <Button color="red" size="xl" w={200} leftSection={<IconX />}>
-            5:3
+            D: 5:3
           </Button>
         ) : (
           <Button
@@ -78,17 +78,14 @@ const Activity2 = () => {
             w={200}
             onClick={() => setChoice("5:3")}
           >
-            5:3
+            D: 5:3
           </Button>
         )}
       </Group>
 
       <Collapse in={choice === "4:3"}>
         <Alert title="Correct!" color="green" miw={400}>
-          <Text>
-            There are 20 boys and 15 girls in the class. The ratio of boys to
-            girls in its simplest form is 20:15 = <b>4:3</b>.
-          </Text>
+          <Text>Correct response</Text>
           <Text></Text>
         </Alert>
       </Collapse>
@@ -96,20 +93,11 @@ const Activity2 = () => {
       <Collapse in={choice !== "4:3" && choice !== undefined}>
         <Alert title="Incorrect!" color="red" miw={400}>
           {choice === "3:4" ? (
-            <Text>
-              You choose <b>3:4</b> which is the ratio of <i> girls to boys</i>,
-              not boys to girls.
-            </Text>
+            <Text>Taking ratio of girls to boys</Text>
           ) : choice === "4:7" ? (
-            <Text>
-              You choose <b>4:7</b> which is the ratio of{" "}
-              <i> boys to total students</i>, not boys to girls.
-            </Text>
+            <Text> Taking ratio of boys to total</Text>
           ) : choice === "5:3" ? (
-            <Text>
-              You choose <b>5:3</b> which is the unsimplified form of 20:15. But
-              both numbers should be simplified by dividing by 5 to get 4:3.
-            </Text>
+            <Text>Did not simplify using the same factor</Text>
           ) : (
             <Text>Try again with these following questions</Text>
           )}
