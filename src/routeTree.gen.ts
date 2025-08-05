@@ -10,17 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Activity2RouteImport } from './routes/activity-2'
-import { Route as Activity1RouteImport } from './routes/activity-1'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Activity1IndexRouteImport } from './routes/activity-1.index'
+import { Route as Activity1IdRouteImport } from './routes/activity-1.$id'
 
 const Activity2Route = Activity2RouteImport.update({
   id: '/activity-2',
   path: '/activity-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Activity1Route = Activity1RouteImport.update({
-  id: '/activity-1',
-  path: '/activity-1',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -28,35 +24,49 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Activity1IndexRoute = Activity1IndexRouteImport.update({
+  id: '/activity-1/',
+  path: '/activity-1/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Activity1IdRoute = Activity1IdRouteImport.update({
+  id: '/activity-1/$id',
+  path: '/activity-1/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/activity-1': typeof Activity1Route
   '/activity-2': typeof Activity2Route
+  '/activity-1/$id': typeof Activity1IdRoute
+  '/activity-1': typeof Activity1IndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/activity-1': typeof Activity1Route
   '/activity-2': typeof Activity2Route
+  '/activity-1/$id': typeof Activity1IdRoute
+  '/activity-1': typeof Activity1IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/activity-1': typeof Activity1Route
   '/activity-2': typeof Activity2Route
+  '/activity-1/$id': typeof Activity1IdRoute
+  '/activity-1/': typeof Activity1IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/activity-1' | '/activity-2'
+  fullPaths: '/' | '/activity-2' | '/activity-1/$id' | '/activity-1'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/activity-1' | '/activity-2'
-  id: '__root__' | '/' | '/activity-1' | '/activity-2'
+  to: '/' | '/activity-2' | '/activity-1/$id' | '/activity-1'
+  id: '__root__' | '/' | '/activity-2' | '/activity-1/$id' | '/activity-1/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Activity1Route: typeof Activity1Route
   Activity2Route: typeof Activity2Route
+  Activity1IdRoute: typeof Activity1IdRoute
+  Activity1IndexRoute: typeof Activity1IndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,13 +78,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Activity2RouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/activity-1': {
-      id: '/activity-1'
-      path: '/activity-1'
-      fullPath: '/activity-1'
-      preLoaderRoute: typeof Activity1RouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -82,13 +85,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activity-1/': {
+      id: '/activity-1/'
+      path: '/activity-1'
+      fullPath: '/activity-1'
+      preLoaderRoute: typeof Activity1IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/activity-1/$id': {
+      id: '/activity-1/$id'
+      path: '/activity-1/$id'
+      fullPath: '/activity-1/$id'
+      preLoaderRoute: typeof Activity1IdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  Activity1Route: Activity1Route,
   Activity2Route: Activity2Route,
+  Activity1IdRoute: Activity1IdRoute,
+  Activity1IndexRoute: Activity1IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

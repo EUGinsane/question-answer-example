@@ -15,6 +15,8 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import { useState } from "react";
+import { questions } from "./questions";
+import { useNavigate } from "@tanstack/react-router";
 
 const Activity1 = () => {
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
@@ -68,26 +70,14 @@ const Activity1 = () => {
               So these ratios are not equivalent
             </Text>
             <Text>Try again with these following questions</Text>
-            <QuestionPractice
-              question="Are 1 : 2 and 2 : 3 equivalent ratios?"
-              answer={false}
-              answered={isCorrect !== undefined}
-            />
-            <QuestionPractice
-              question="Are 3 : 4 and 6 : 8 equivalent ratios?"
-              answer={true}
-              answered={isCorrect !== undefined}
-            />
-            <QuestionPractice
-              question="Are 4 : 2 and 2 : 1 equivalent ratios?"
-              answer={true}
-              answered={isCorrect !== undefined}
-            />
-            <QuestionPractice
-              question="Are 5 : 4 and 4 : 3 equivalent ratios?"
-              answer={false}
-              answered={isCorrect !== undefined}
-            />
+            {questions.map((question, index) => (
+              <QuestionPractice
+                question={question.question}
+                answer={question.answer}
+                answered={isCorrect !== undefined}
+                index={index}
+              />
+            ))}
           </Stack>
         </Alert>
       </Collapse>
@@ -109,11 +99,14 @@ const QuestionPractice = ({
   question,
   // answer,
   // answered,
+  index,
 }: {
   question: string;
   answer: boolean;
   answered: boolean;
+  index: number;
 }) => {
+  const navigate = useNavigate();
   // const correct = answer === true ? "Yes" : "No";
   // const [choice, setChoice] = useState<"Yes" | "No" | undefined>(undefined);
   // const isCorrect = choice === undefined ? undefined : choice === correct;
@@ -127,10 +120,30 @@ const QuestionPractice = ({
   return (
     <Paper shadow="md" withBorder p="md">
       <Group justify="space-between">
-        <Text td="underline" c="blue" style={{ cursor: "pointer" }} fw={500}>
+        <Text
+          td="underline"
+          c="blue"
+          style={{ cursor: "pointer" }}
+          fw={500}
+          onClick={() => {
+            navigate({
+              to: "/activity-1/$id",
+              params: { id: index.toString() },
+            });
+          }}
+        >
           {question}
         </Text>
-        <Button variant="default" rightSection={<IconChevronRight size={16} />}>
+        <Button
+          variant="default"
+          rightSection={<IconChevronRight size={16} />}
+          onClick={() =>
+            navigate({
+              to: "/activity-1/$id",
+              params: { id: index.toString() },
+            })
+          }
+        >
           Go to Question
         </Button>
         {/* <Group>
