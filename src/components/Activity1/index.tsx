@@ -106,7 +106,6 @@ const QuestionPractice = ({
   answered: boolean;
   index: number;
 }) => {
-  const navigate = useNavigate();
   // const correct = answer === true ? "Yes" : "No";
   // const [choice, setChoice] = useState<"Yes" | "No" | undefined>(undefined);
   // const isCorrect = choice === undefined ? undefined : choice === correct;
@@ -126,10 +125,7 @@ const QuestionPractice = ({
           style={{ cursor: "pointer" }}
           fw={500}
           onClick={() => {
-            navigate({
-              to: "/activity-1/$id",
-              params: { id: index.toString() },
-            });
+            window.open(`/activity-1/${index}`, "_blank");
           }}
         >
           {question}
@@ -137,12 +133,7 @@ const QuestionPractice = ({
         <Button
           variant="default"
           rightSection={<IconChevronRight size={16} />}
-          onClick={() =>
-            navigate({
-              to: "/activity-1/$id",
-              params: { id: index.toString() },
-            })
-          }
+          onClick={() => window.open(`/activity-1/${index}`, "_blank")}
         >
           Go to Question
         </Button>
