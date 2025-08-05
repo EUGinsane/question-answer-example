@@ -1,8 +1,8 @@
-import { Button, Group, Stack, Title } from "@mantine/core";
+import { Button, Collapse, Group, Stack, Title } from "@mantine/core";
 import { createFileRoute } from "@tanstack/react-router";
 import { questions } from "../components/Activity1/questions";
 import { useState } from "react";
-import { IconCheck, IconX } from "@tabler/icons-react";
+import { IconCheck, IconRefresh, IconX } from "@tabler/icons-react";
 
 export const Route = createFileRoute("/activity-1/$id")({
   loader: ({ params: { id } }) => {
@@ -49,15 +49,15 @@ function RouteComponent() {
         </Button>
       </Group>
 
-      {/* <Collapse in={isCorrect !== undefined}>
+      <Collapse in={choice !== undefined}>
         <Button
           variant="default"
-          onClick={() => setIsCorrect(undefined)}
+          onClick={() => setChoice(undefined)}
           leftSection={<IconRefresh />}
         >
           Reset
         </Button>
-      </Collapse> */}
+      </Collapse>
     </Stack>
   );
 }
