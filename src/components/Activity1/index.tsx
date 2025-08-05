@@ -20,7 +20,7 @@ const Activity1 = () => {
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
   return (
     <Stack align="center" gap="xl">
-      <Title>Are 3:4 and 5:6 equivalent ratios?</Title>
+      <Title>Are 3 : 4 and 5 : 6 equivalent ratios?</Title>
       <Group gap="xl">
         {isCorrect === false ? (
           <Button color="red" size="xl" w={200} leftSection={<IconX />}>
@@ -64,27 +64,27 @@ const Activity1 = () => {
         <Alert title="Incorrect!" color="red" miw={400}>
           <Stack>
             <Text>
-              We cannot get 5:6 from 3:4 by multiplying by the same number. So
-              these ratios are not equivalent
+              We cannot get 5 : 6 from 3 : 4 by multiplying by the same number.
+              So these ratios are not equivalent
             </Text>
             <Text>Try again with these following questions</Text>
             <QuestionPractice
-              question="Are 1:2 and 2:3 equivalent ratios?"
+              question="Are 1 : 2 and 2 : 3 equivalent ratios?"
               answer={false}
               answered={isCorrect !== undefined}
             />
             <QuestionPractice
-              question="Are 3:4 and 6:8 equivalent ratios?"
+              question="Are 3 : 4 and 6 : 8 equivalent ratios?"
               answer={true}
               answered={isCorrect !== undefined}
             />
             <QuestionPractice
-              question="Are 4:2 and 2:1 equivalent ratios?"
+              question="Are 4 : 2 and 2 : 1 equivalent ratios?"
               answer={true}
               answered={isCorrect !== undefined}
             />
             <QuestionPractice
-              question="Are 5:4 and 4:3 equivalent ratios?"
+              question="Are 5 : 4 and 4 : 3 equivalent ratios?"
               answer={false}
               answered={isCorrect !== undefined}
             />
