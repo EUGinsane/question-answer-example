@@ -16,7 +16,6 @@ import {
 } from "@tabler/icons-react";
 import { useState } from "react";
 import { questions } from "./questions";
-import { useNavigate } from "@tanstack/react-router";
 
 const Activity1 = () => {
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
