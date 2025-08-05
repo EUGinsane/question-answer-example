@@ -83,6 +83,11 @@ const Activity1 = () => {
               answer={true}
               answered={isCorrect !== undefined}
             />
+            <QuestionPractice
+              question="Are 5:4 and 4:3 equivalent ratios?"
+              answer={false}
+              answered={isCorrect !== undefined}
+            />
           </Stack>
         </Alert>
       </Collapse>
@@ -122,7 +127,9 @@ const QuestionPractice = ({
   return (
     <Paper shadow="md" withBorder p="md">
       <Group justify="space-between">
-        <Text fw={500}>{question}</Text>
+        <Text td="underline" c="blue" style={{ cursor: "pointer" }} fw={500}>
+          {question}
+        </Text>
         <Button variant="default" rightSection={<IconChevronRight size={16} />}>
           Go to Question
         </Button>
