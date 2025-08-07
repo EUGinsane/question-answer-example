@@ -66,9 +66,9 @@ const Activity1 = () => {
           <Stack>
             <Text>
               We cannot get 5 : 6 from 3 : 4 by multiplying by the same number.
-              So these ratios are not equivalent
+              So these ratios are not equivalent.
             </Text>
-            <Text>Try again with these following questions</Text>
+            <Text>Try again with these following questions.</Text>
             {questions.map((question, index) => (
               <QuestionPractice
                 question={question.question}

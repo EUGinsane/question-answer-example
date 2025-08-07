@@ -23,7 +23,7 @@ const Activity2 = () => {
       <Group gap="xl">
         {choice === "3:4" ? (
           <Button color="red" size="xl" w={200} leftSection={<IconX />}>
-            A: 3 : 4
+            A) 3 : 4
           </Button>
         ) : (
           <Button
@@ -33,12 +33,12 @@ const Activity2 = () => {
             w={200}
             onClick={() => setChoice("3:4")}
           >
-            A: 3 : 4
+            A) 3 : 4
           </Button>
         )}
         {choice === "4:3" ? (
           <Button size="xl" color="green" w={200} leftSection={<IconCheck />}>
-            B: 4 : 3
+            B) 4 : 3
           </Button>
         ) : (
           <Button
@@ -48,12 +48,12 @@ const Activity2 = () => {
             w={200}
             onClick={() => setChoice("4:3")}
           >
-            B: 4 : 3
+            B) 4 : 3
           </Button>
         )}
         {choice === "4:7" ? (
           <Button color="red" size="xl" w={200} leftSection={<IconX />}>
-            C: 4 : 7
+            C) 4 : 7
           </Button>
         ) : (
           <Button
@@ -63,12 +63,12 @@ const Activity2 = () => {
             w={200}
             onClick={() => setChoice("4:7")}
           >
-            C: 4 : 7
+            C) 4 : 7
           </Button>
         )}
         {choice === "5:3" ? (
           <Button color="red" size="xl" w={200} leftSection={<IconX />}>
-            D: 5 : 3
+            D) 5 : 3
           </Button>
         ) : (
           <Button
@@ -78,7 +78,7 @@ const Activity2 = () => {
             w={200}
             onClick={() => setChoice("5:3")}
           >
-            D: 5 : 3
+            D) 5 : 3
           </Button>
         )}
       </Group>
@@ -93,13 +93,13 @@ const Activity2 = () => {
       <Collapse in={choice !== "4:3" && choice !== undefined}>
         <Alert title="Incorrect!" color="red" miw={400}>
           {choice === "3:4" ? (
-            <Text>Taking ratio of girls to boys</Text>
+            <Text>Taking ratio of girls to boys.</Text>
           ) : choice === "4:7" ? (
-            <Text> Taking ratio of boys to total</Text>
+            <Text> Taking ratio of boys to total.</Text>
           ) : choice === "5:3" ? (
-            <Text>Did not simplify using the same factor</Text>
+            <Text>Did not simplify using the same factor.</Text>
           ) : (
-            <Text>Try again with these following questions</Text>
+            <Text>Try again with these following questions.</Text>
           )}
         </Alert>
       </Collapse>
