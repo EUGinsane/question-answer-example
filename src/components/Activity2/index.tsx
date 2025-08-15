@@ -85,19 +85,18 @@ const Activity2 = () => {
 
       <Collapse in={choice === "4:3"}>
         <Alert title="Correct!" color="green" miw={400}>
-          <Text>Correct response</Text>
-          <Text></Text>
+          <Text>This is correct. Well done!</Text>
         </Alert>
       </Collapse>
 
       <Collapse in={choice !== "4:3" && choice !== undefined}>
         <Alert title="Incorrect!" color="red" miw={400}>
           {choice === "3:4" ? (
-            <Text>Taking ratio of girls to boys.</Text>
+            <Text>This is incorrect because this is the ratio of girls to boys, not boys to girls.</Text>
           ) : choice === "4:7" ? (
-            <Text> Taking ratio of boys to total.</Text>
+            <Text>This is incorrect because this is the ratio of boys to the total number of children, not boys to girls.</Text>
           ) : choice === "5:3" ? (
-            <Text>Did not simplify using the same factor.</Text>
+            <Text>This is incorrect because the ratio is reduced wrongly for the boys. We should divide the ratio 20 : 15 throughout by 5</Text>
           ) : (
             <Text>Try again with these following questions.</Text>
           )}
