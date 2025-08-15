@@ -16,6 +16,7 @@ import {
 } from "@tabler/icons-react";
 import { useState } from "react";
 import { questions } from "./questions";
+import IncorrectAlert from "../Alerts/IncorrectAlert";
 
 const Activity1 = () => {
   const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
@@ -62,7 +63,7 @@ const Activity1 = () => {
       </Collapse>
 
       <Collapse in={isCorrect === false}>
-        <Alert title="Incorrect!" color="red" miw={400}>
+        <IncorrectAlert title="Incorrect!" miw={400}>
           <Stack>
             <Text>
               We cannot get 5 : 6 from 3 : 4 by multiplying by the same number.
@@ -78,7 +79,7 @@ const Activity1 = () => {
               />
             ))}
           </Stack>
-        </Alert>
+        </IncorrectAlert>
       </Collapse>
 
       <Collapse in={isCorrect !== undefined}>

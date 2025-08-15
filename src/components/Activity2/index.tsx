@@ -9,6 +9,7 @@ import {
 } from "@mantine/core";
 import { IconCheck, IconRefresh, IconX } from "@tabler/icons-react";
 import { useState } from "react";
+import IncorrectAlert from "../Alerts/IncorrectAlert";
 
 const Activity2 = () => {
   const [choice, setChoice] = useState<
@@ -90,7 +91,7 @@ const Activity2 = () => {
       </Collapse>
 
       <Collapse in={choice !== "4:3" && choice !== undefined}>
-        <Alert title="Incorrect!" color="red" miw={400}>
+        <IncorrectAlert title="Incorrect!" miw={400}>
           {choice === "3:4" ? (
             <Text>This is incorrect because this is the ratio of girls to boys, not boys to girls.</Text>
           ) : choice === "4:7" ? (
@@ -100,7 +101,7 @@ const Activity2 = () => {
           ) : (
             <Text>Try again with these following questions.</Text>
           )}
-        </Alert>
+        </IncorrectAlert>
       </Collapse>
 
       <Collapse in={choice !== undefined}>
